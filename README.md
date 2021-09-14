@@ -16,3 +16,5 @@ Fonts:
 - Helvetica Neue
 - Helvetica
 - Cocogoose Pro Block
+
+If it is inside, it has to be recreatd on every single Re-render

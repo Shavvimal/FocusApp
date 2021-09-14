@@ -1,2 +1,1 @@
-export { default as Header } from './Header';
-export { default as Modal } from './Modal';
+export { default as Focus } from './Focus2/Focus';

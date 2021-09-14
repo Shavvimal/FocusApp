@@ -1,10 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, Platform, StatusBar } from 'react-native';
+import { Focus } from './src/layout/Focus/Focus';
+import { Timer } from './src/layout/Timer/Timer';
+import { colors } from './src/utils/colors'
+
+
+
 
 export default function App() {
+  const [focusSubject, setFocusSubject] = useState("Gardening");
+
   return (
     <View style={styles.container}>
-      <Text>Start! ⭐</Text>
+      {focusSubject ?
+        <Text style={styles.text}><Timer focusSubject={focusSubject} /></Text>
+        :
+        <Focus addSubject={setFocusSubject} />
+      }
+      <Button title="Reset" onPress={() => setFocusSubject(null)} />
     </View>
   );
 }
@@ -12,8 +25,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.purple,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     alignItems: 'center',
-    justifyContent: 'center',
   },
+  text: {
+    color: "white",
+    fontSize: 30
+  }
 });
